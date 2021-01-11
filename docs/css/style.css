@@ -1,0 +1,37 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.graph {
+  overflow: auto;
+}
+
+.color--k-5 {
+  color: var(--color--k-5);
+}
+
+.bg--green {
+  background: #02a23f;
+  color: var(--color--k-10);
+}
+
+.bg--blue {
+  background: #72c0e5;
+  color: var(--color--k-10);
+}
+
+@media (min-width: 756px) {
+  .food {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+.food-element {
+  padding: 20px 0;
+  border-bottom: 1px solid #999;
+  overflow-x: auto;
+}
