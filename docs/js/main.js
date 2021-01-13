@@ -3,7 +3,7 @@
 // Health Tracking Graph
 
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 180, left: 60 },
+var margin = { top: 10, right: 30, bottom: 40, left: 60 },
   width = 900 - margin.left - margin.right,
   height = 400 - margin.top - margin.bottom;
 
@@ -45,26 +45,24 @@ d3.csv(
       .call(d3.axisBottom(x));
 
     // Add Y axis
-    var y = d3.scaleLinear().domain([0, 10]).range([height, 0]);
+    var y = d3.scaleLinear().domain([12, 0]).range([0, height]);
     svg.append("g").call(d3.axisLeft(y));
 
-    // Add the positives line
     svg
-      .append("path")
-      .datum(data)
-      .attr("fill", "none")
-      .attr("stroke", "pink")
-      .attr("stroke-width", 1.5)
-      .attr(
-        "d",
-        d3
-          .line()
-          .x(function (d) {
-            return x(d.date);
-          })
-          .y(function (d) {
-            return y(d.positives);
-          })
-      );
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("fill", "#72c0e5")
+      // .attr("stroke", "pink")
+      // .attr("stroke-width", 1.5)
+      .attr("width", "4")
+      .attr("height", function (d) {
+        return y(d.positives);
+      })
+      .attr("x", function (d) {
+        return x(d.date);
+      })
+      .attr("y", "0");
   }
 );
