@@ -46,7 +46,7 @@ d3.csv(
       .call(d3.axisBottom(x));
 
     // Add Y axis
-    var y = d3.scaleLinear().domain([0, 1000]).range([height, 0]);
+    var y = d3.scaleLinear().domain([0, 1100]).range([height, 0]);
     svg2.append("g").call(d3.axisLeft(y));
 
     // Add the positives line
@@ -76,9 +76,9 @@ d3.csv(
       .enter()
       .append("line")
       .attr("x1", "0")
-      .attr("y1", "44%")
+      .attr("y1", "48%")
       .attr("x2", "100%")
-      .attr("y2", "44%")
+      .attr("y2", "48%")
       .attr("fill", "none")
       .attr("stroke", "#bb2a5c")
       .attr("stroke-width", "1")
