@@ -8,8 +8,8 @@ var margin = { top: 10, right: 30, bottom: 40, left: 60 },
   height = 400 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3
-  .select("#graph")
+var svg2 = d3
+  .select("#graph2")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -39,17 +39,17 @@ d3.csv(
         })
       )
       .range([0, width]);
-    svg
+    svg2
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
 
     // Add Y axis
-    var y = d3.scaleLinear().domain([0, 12]).range([height, 0]);
-    svg.append("g").call(d3.axisLeft(y));
+    var y = d3.scaleLinear().domain([0, 1000]).range([height, 0]);
+    svg2.append("g").call(d3.axisLeft(y));
 
     // Add the positives line
-    svg
+    svg2
       .append("path")
       .datum(data)
       .attr("fill", "none")
@@ -67,21 +67,20 @@ d3.csv(
           })
       );
 
-    //   svg
-    //     .selectAll("dot")
-    //     .data(data)
-    //     .enter()
-    //     .append("rect")
-    //     .attr("fill", "pink")
-    //     // .attr("stroke", "pink")
-    //     // .attr("stroke-width", 1.5)
-    //     .attr("width", "4")
-    //     .attr("height", function (d) {
-    //       return y(d.positives);
-    //     })
-    //     .attr("x", function (d) {
-    //       return x(d.date);
-    //     })
-    //     .attr("y", "0");
+    // Top limit line
+    svg
+      .append("g")
+      .selectAll("dot")
+      .data(data)
+      .enter()
+      .append("line")
+      .attr("x1", "0")
+      .attr("y1", "10.5%")
+      .attr("x2", "100%")
+      .attr("y2", "10.5%")
+      .attr("fill", "none")
+      .attr("stroke", "#bb2a5c")
+      .attr("stroke-width", "1")
+      .attr("stroke-dasharray", "4 10");
   }
 );
