@@ -54,7 +54,7 @@ d3.csv(
       .append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke", "#72c0e5")
+      .attr("stroke", "#bb2a5c")
       .attr("stroke-width", 1.5)
       .attr(
         "d",
