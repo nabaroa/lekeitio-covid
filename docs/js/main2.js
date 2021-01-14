@@ -25,6 +25,7 @@ d3.csv(
     return {
       date: d3.timeParse("%Y-%m-%d")(d.date),
       positives: d.positives,
+      ratio: d.ratio,
     };
   },
 
@@ -63,21 +64,21 @@ d3.csv(
             return x(d.date);
           })
           .y(function (d) {
-            return y(d.positives);
+            return y(d.ratio);
           })
       );
 
     // Top limit line
-    svg
+    svg2
       .append("g")
       .selectAll("dot")
       .data(data)
       .enter()
       .append("line")
       .attr("x1", "0")
-      .attr("y1", "10.5%")
+      .attr("y1", "44%")
       .attr("x2", "100%")
-      .attr("y2", "10.5%")
+      .attr("y2", "44%")
       .attr("fill", "none")
       .attr("stroke", "#bb2a5c")
       .attr("stroke-width", "1")
